@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loan xmlns="http://ns.bic.org.uk/lcf/1.0" 
+      xmlns:ns2="http://a9.com/-/spec/opensearch/1.1/">
+  {% if patron %}
+  <patron-ref>{{ patron.ref }} </patron-ref>
+  {% else %}
+  <patron-ref>https://lms.server/lcf/1.0/patrons/patron-id</patron-ref>
+  {% endif %}
+  {% if item %}
+  <item-ref>{{ item.ref }}</item-ref>
+  {% if item.start %}
+  <start-date>checkout-date</start-date>
+  {% endif %}
+  {% else %}
+  <item-ref>https://content.server/lcf/1.0/items/item-id<item-ref>
+  <!-- library system uses content.server item-id to locate item\patron -->
+  <start-date>checkout-date</start-date>
+  <end-due-date>due-date</end-due-date>
+  <access-link>
+    <link-type>01</link-type> <!- Direct link to resource ->
+    <link>http://content.server/content.pdf#PositionLocationID</link>
+  </access-link>
+  <access-link>
+    <link-type>02</link-type> <!- Indirect link to resource ->
+    <link>http://content.server/viewer/content#PositionLocationId</link>
+  </access-link>
+  <loan-status>01</loan-status>
+  <!—checked-out but could use other codes, for failure etc.-->
+  {% endif %}
+</loan>
