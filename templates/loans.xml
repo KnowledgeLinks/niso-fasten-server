@@ -9,22 +9,34 @@
   {% if item %}
   <item-ref>{{ item.ref }}</item-ref>
   {% if item.start %}
-  <start-date>checkout-date</start-date>
+  <start-date>{{ item.start }}</start-date>
+  {% endif %}
+  {% if item.end %}
+  <end-due-date>{{ item.end }}</end-due-date>
+  {% endif %}
+  {% for row in item.access_links %}
+  <access-link>
+    <link-type>{{ row.link_type }} </link-type> 
+    <link>{{ row.link }}</link>
+  </access-link> 
+  {% endfor %}
+  {% if item.loan_status %}
+  <loan-status>{{ item.loan_status }}</loan-status>
   {% endif %}
   {% else %}
-  <item-ref>https://content.server/lcf/1.0/items/item-id<item-ref>
+  <item-ref>https://content.server/lcf/1.0/items/item-id</item-ref>
   <!-- library system uses content.server item-id to locate item\patron -->
   <start-date>checkout-date</start-date>
   <end-due-date>due-date</end-due-date>
   <access-link>
-    <link-type>01</link-type> <!- Direct link to resource ->
+    <link-type>01</link-type> <!-- Direct link to resource -->
     <link>http://content.server/content.pdf#PositionLocationID</link>
   </access-link>
   <access-link>
-    <link-type>02</link-type> <!- Indirect link to resource ->
+    <link-type>02</link-type> <!-- Indirect link to resource -->
     <link>http://content.server/viewer/content#PositionLocationId</link>
   </access-link>
   <loan-status>01</loan-status>
-  <!—checked-out but could use other codes, for failure etc.-->
+  <!--checked-out but could use other codes, for failure etc.-->
   {% endif %}
 </loan>
