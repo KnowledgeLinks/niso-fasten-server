@@ -1,0 +1,8 @@
+<ncip:UserId>
+    {% if UserId %}
+    <ncip:UserIdentifierValue>{{ UserId }}</ncip:UserIdentifierValue>
+    {% else %}
+    <ncip:UserIdentifierValue>string</ncip:UserIdentifierValue>
+    {% endif %}
+</ncip:UserId>
+

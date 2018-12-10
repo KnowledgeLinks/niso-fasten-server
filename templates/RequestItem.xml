@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ncip:RequestItem xmlns:ncip="http://www.niso.org/2008/ncip">
+  {% include 'InitiationHeader.xml' %}
+  {% include 'UserId.xml' %}
+  {% include 'ItemId.xml' %}
+</ncip:RequestItem>

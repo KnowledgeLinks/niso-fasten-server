@@ -1,0 +1,13 @@
+<ncip:ItemId>
+  {% if ItemIdentifierType %}
+  <ncip:ItemIdentifierType ncip:Scheme="">{{ ItemIdentifierType }}</ncip:ItemIdentifierType>
+  {% else %}
+  <ncip:ItemIdentifierType ncip:Scheme="">string</ncip:ItemIdentifierType>
+  {% endif %}
+  {% if ItemIdentifierValue %}
+  <ncip:ItemIdentifierValue>{{ ItemIdentifierValue }}</ncip:ItemIdentifierValue>
+  {% else %}
+  <ncip:ItemIdentifierValue>string</ncip:ItemIdentifierValue>
+  {% endif %}
+</ncip:ItemId>
+

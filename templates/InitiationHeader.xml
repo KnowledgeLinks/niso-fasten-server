@@ -1,0 +1,10 @@
+<ncip:InitiationHeader>
+  <ncip:FromAgencyId>
+  {% if AgencyId %}
+    <ncip:AgencyId ncip:Scheme="">{{ AgencyId }}</ncip:AgencyId>
+  {% else %}
+    <ncip:AgencyId ncip:Scheme="">string</ncip:AgencyId>
+  {% endif %}
+  </ncip:FromAgencyId>
+</ncip:InitiationHeader>
+
